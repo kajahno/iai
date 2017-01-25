@@ -7,6 +7,7 @@ var cssMin = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var rename = require('gulp-rename');
+const imagemin = require('gulp-imagemin');
 
 // Static server
 gulp.task('browser-sync', function() {
@@ -50,6 +51,12 @@ gulp.task('js', function () {
     .pipe(uglify())
     .pipe(gulp.dest('./prod/js'));
 });
+
+gulp.task('images', () =>
+    gulp.src('./dev/img/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./prod/img/'))
+);
 
 // start server and watch files for changes
 gulp.task('watch', [ 'sass','browser-sync' ], function() {
