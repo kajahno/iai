@@ -32,9 +32,9 @@ gulp.task('sass', function () {
   return gulp.src('./dev/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.init())
-    .pipe(concat('iai.css'))
+    .pipe(concat('curiouzmind.css'))
     .pipe(gulp.dest('./prod/css'))
-    .pipe(rename('iai.min.css'))
+    .pipe(rename('curiouzmind.min.css'))
     .pipe(cssMin())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./prod/css'))
@@ -46,17 +46,17 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
   return gulp.src('./dev/js/**/*.js')
     .pipe(sourcemaps.init())
-    .pipe(concat('iai.js'))
+    .pipe(concat('curiouzmind.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./prod/js'))
-    .pipe(rename('iai.min.js'))
+    .pipe(rename('curiouzmind.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./prod/js'))
     .pipe(browserSync.reload({stream: true}))
 });
 //images task
 gulp.task('images', () =>
-    gulp.src('./dev/img/*.+(jpg|jpeg|png|gif)')
+    gulp.src('./dev/img/**/*.+(jpg|jpeg|png|gif)')
         .pipe(imagemin())
         .pipe(gulp.dest('./prod/img/'))
         .pipe(browserSync.reload({stream: true}))
